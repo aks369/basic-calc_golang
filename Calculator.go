@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 func main() {
 	var num1, num2 int
@@ -11,7 +14,11 @@ func main() {
 
 	if op == "+" || op == "-" || op == "*" || op == "/" || op == "%" {
 		fmt.Println("Enter the two numbers: ")
-		fmt.Scan(&num1, &num2)
+		_, err := fmt.Scan(&num1, &num2)
+		if err != nil {
+			fmt.Println("Invalid number format;", err)
+			os.Exit(0)
+		}
 
 		switch op {
 		case "+":
